@@ -3,13 +3,13 @@
 update:
 	python3 -m venv .venv
 	rm -rf .venv/.gitignore
-	./.venv/bin/pip3 install -r backend/requirements.txt
-	./.venv/bin/pip3 freeze > backend/requirements-lock.txt
+	./.venv/bin/pip3 install -r requirements.txt
+	./.venv/bin/pip3 freeze > requirements-lock.txt
 
 build:
 	python3 -m venv .venv
 	rm -rf .venv/.gitignore
-	./.venv/bin/pip3 install -r backend/requirements-lock.txt
+	./.venv/bin/pip3 install -r requirements-lock.txt
 
 clean:
 	find . -name "*.pyc" -delete
