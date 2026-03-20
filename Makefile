@@ -1,4 +1,4 @@
-.PHONY: update clean codex build
+.PHONY: update clean codex build dev
 
 update:
 	python3 -m venv .venv
@@ -19,3 +19,6 @@ codex:
 	npm install @openai/codex --save-dev
 	rm package.json package-lock.json
 	npx codex
+
+dev:
+	set -a; . ./.env.example; set +a; .venv/bin/uvicorn app.main:app --reload

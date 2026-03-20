@@ -3,6 +3,10 @@
 from fastapi import FastAPI
 
 from app.api.routers import router
+from app.settings import Settings, get_settings
 
-app: FastAPI = FastAPI(title="Life365 Catalog AI Assistant")
+settings: Settings = get_settings()
+
+app: FastAPI = FastAPI(title=settings.app_name)
+app.state.settings = settings
 app.include_router(router)
