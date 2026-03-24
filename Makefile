@@ -1,6 +1,4 @@
-.PHONY: update clean codex build dev clean-all docker-up
-
-IMAGE_NAME ?= life365-catalog-ai
+.PHONY: update clean codex build dev clean-all docker-up docker-down
 
 update:
 	python3 -m venv .venv
@@ -31,8 +29,8 @@ dev:
 	set -a; . ./.env.example; set +a; .venv/bin/uvicorn app.main:app --reload
 
 docker-up:
-	docker build -t $(IMAGE_NAME) .
-	docker run --rm -it -p 8000:8000 $(IMAGE_NAME)
+	docker compose up
 
 docker-down:
+	docker compose down -v
 	docker image prune -a
